@@ -19,7 +19,13 @@ String playGame(String guess, String answer){
   if(a1 == g1 && a2 == g2 && a3 == g3){
     return "Yes";
   }
-  if(g1 == a1 || g2 == a2 ||g3 == a3){
+  if(g1 == a1){
+    a++;
+  }
+  if(g2 == a2){
+    a++;
+  }
+  if(g3 == a3){
     a++;
   }
   if(g1 == a2 || g1 == a3){
