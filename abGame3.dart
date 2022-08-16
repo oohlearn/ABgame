@@ -4,17 +4,22 @@ import 'dart:math';
 class ABGame3{
   
   start(){
+    print("這是ABGame遊戲，請輸入3個完全不重複整數，共有7次機會");
     String result = playGame();
     print(result);
-    // return result;
   }
   String playGame(){
     var _answer = Random().nextInt(1000);
     String _answerS = "$_answer";
     while(_answerS[0] == _answerS[1] || _answerS[0] == _answerS[2] || _answerS[1] == _answerS[2]){
-      _answer = Random().nextInt(1000);
-      _answerS = "$_answer";
+      // print(_answerS);
+      while(_answerS.length != 3){
+        _answer = Random().nextInt(1000);
+        _answerS = "$_answer";
+        // print(_answerS);
+      }
     }
+    
     String a1 = _answerS[0];
     String a2 = _answerS[1];
     String a3 = _answerS[2];
@@ -22,7 +27,7 @@ class ABGame3{
     
     
     int maxTimes = 7;
-    int count = 1;
+    int chance = 7;
     String result = "";
     for(int i = 0 ; i < maxTimes; i ++){
       String guess = stdin.readLineSync()!;
@@ -42,7 +47,6 @@ class ABGame3{
 
       if(a1 == g1 && a2 == g2 && a3 == g3){
         print("Yes");
-        // result =  "Yes";
         break;
       }
       if(g1 == a1){
@@ -63,9 +67,9 @@ class ABGame3{
       if(g3 == a2 || g3 == a1){
         b++;
       }
-      print("$a A $b B 答題第$count次");
-      count++;
-      // result = "$a A $b B";
+      chance--;
+      print("$a A $b B 剩下$chance次機會");
+    
     }
     print("遊戲結束");
     // result = "遊戲結束";
