@@ -1,21 +1,29 @@
 import 'dart:io';
 import 'dart:math';
 
-// class Answer(){
-//   String a1;
-//   String a2;
-//   String a3;
-//   String a4;
+class Answer{
+  
+  String _a1S = "";
+  String _a2S = "";
+  String _a3S = "";
 
-  // Answer(){
-  //   a1 = Random().nextInt(10);
-  //   a2 = Random().nextInt(10);
-  //   a3 = Random().nextInt(10);
-  //   a4 = Random().nextInt(10);
-
-    
-  // }
-// }
+  Answer(){
+    var _a1 = Random().nextInt(10);
+    var _a2 = Random().nextInt(10);
+    while(_a1 == _a2){
+      _a2 = Random().nextInt(10);
+    }
+    var _a3 = Random().nextInt(10);
+    while(_a3 == _a2 || _a3 == _a1){
+      _a3 = Random().nextInt(10);
+    } 
+    _a1S = "$_a1";
+    _a2S = "$_a2";
+    _a3S = "$_a3";
+  }
+  
+  
+}
 
 class ABGame3{
   start(){
@@ -25,20 +33,8 @@ class ABGame3{
   }
 
   String playGame(){ 
-    var _a1 = Random().nextInt(10);
-    var _a2 = Random().nextInt(10);
-    while(_a1 == _a2){
-      _a2 = Random().nextInt(10);
-    }
-    var _a3 = Random().nextInt(10);
-    while(_a3 == _a2 || _a3 == _a1){
-      _a3 = Random().nextInt(10);
-    }
-    String _a1S = "$_a1";
-    String _a2S = "$_a2";
-    String _a3S = "$_a3";
-    print("$_a1S $_a2S $_a3S");
-
+    Answer answer = Answer();
+    print("$answer._a1S $answer._a2S $answer._a3S");
     int maxTimes = 7;
     int chance = 7;
     String result = "";
@@ -58,26 +54,26 @@ class ABGame3{
       int a = 0;
       int b = 0;
 
-      if(_a1S == g1 && _a2S == g2 && _a3S == g3){
+      if(answer._a1S == g1 && answer._a2S == g2 && answer._a3S == g3){
         print("Yes");
         break;
       }
-      if(g1 == _a1S){
+      if(g1 == answer._a1S){
         a++;
       }
-      if(g2 == _a2S){
+      if(g2 == answer._a2S){
         a++;
       }
-      if(g3 == _a3S){
+      if(g3 == answer._a3S){
         a++;
       }
-      if(g1 == _a2S || g1 == _a3S){
+      if(g1 == answer._a2S || g1 == answer._a3S){
         b++;
       }
-      if(g2 == _a1S || g2 == _a3S){
+      if(g2 == answer._a1S || g2 == answer._a3S){
         b++;
       }
-      if(g3 == _a2S || g3 == _a1S){
+      if(g3 == answer._a2S || g3 == answer._a1S){
         b++;
       }
       chance--;
