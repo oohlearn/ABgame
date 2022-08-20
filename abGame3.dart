@@ -3,9 +3,9 @@ import 'dart:math';
 
 class Answer{
   
-  String _a1S = "";
-  String _a2S = "";
-  String _a3S = "";
+  String? _a1S ;
+  String? _a2S ;
+  String? _a3S ;
 
   Answer(){
     var _a1 = Random().nextInt(10);
@@ -17,9 +17,14 @@ class Answer{
     while(_a3 == _a2 || _a3 == _a1){
       _a3 = Random().nextInt(10);
     } 
-    _a1S = "$_a1";
-    _a2S = "$_a2";
-    _a3S = "$_a3";
+    this._a1S = "$_a1";
+    this._a2S = "$_a2";
+    this._a3S = "$_a3";
+
+    
+    }
+  PrintAnswer(){
+    print("$_a1S $_a2S $_a3S");
   }
   
   
@@ -28,13 +33,13 @@ class Answer{
 class ABGame3{
   start(){
     print("這是ABGame遊戲，請輸入3個完全不重複整數，共有7次機會");
-    String result = playGame();
+    Answer answer = new Answer();
+    String result = playGame(answer);
     print(result);
   }
 
-  String playGame(){ 
-    Answer answer = Answer();
-    print("$answer._a1S $answer._a2S $answer._a3S");
+  String playGame(answer){ 
+    answer.PrintAnswer();
     int maxTimes = 7;
     int chance = 7;
     String result = "";
